@@ -1,24 +1,59 @@
 import axios from "axios";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
+import { connect } from "react-redux";
+import { ImSpinner2 } from "react-icons/im";
+import * as actions from "../Redux/actions";
 
 import Item from "./Item";
 
-function Dashboard() {
-  const [itemsData, setItemData] = useState([]);
+function Dashboard(props) {
+  const containerRef = useRef(null);
   useEffect(() => {
-    axios
-      .get("https://run.mocky.io/v3/05e9651d-528e-4d7c-a60b-bae8f09684c6")
-      .then((res) => setItemData(res.data.products));
-  }, []);
+    const getItems = async (from, to) => {
+      await props.getItems(from, to);
+    };
+
+    let observer = new IntersectionObserver(
+      (el) => {
+        if (el[0].isIntersecting) {
+          if (!props.reachedEnd) getItems(props.from, props.to);
+        }
+      },
+      {
+        root: null,
+        rootMargin: "5px",
+        threshold: 1,
+      }
+    );
+
+    if (containerRef.current) observer.observe(containerRef.current);
+    return () => {
+      if (containerRef.current) observer.unobserve(containerRef.current);
+    };
+  }, [containerRef, props]);
+
   return (
     <div className="dashboardWrapper">
       <div className="itemsContainer">
-        {itemsData.map((el) => (
-          <Item item={el} />
-        ))}
+        {props.products.length > 0 &&
+          props.products.map((el) => <Item item={el} />)}
+      </div>
+      <div ref={containerRef} className="spinnerWrapper">
+        {props.reachedEnd ? (
+          "No more results to show..."
+        ) : (
+          <ImSpinner2 className="spinner" />
+        )}
       </div>
     </div>
   );
 }
-
-export default Dashboard;
+const mapStatesToProps = (state) => {
+  return {
+    products: state.items,
+    from: state.limit.from,
+    to: state.limit.to,
+    reachedEnd: state.reachedEnd,
+  };
+};
+export default connect(mapStatesToProps, actions)(Dashboard);

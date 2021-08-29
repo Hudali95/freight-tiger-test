@@ -3,7 +3,6 @@ import { connect } from "react-redux";
 import * as actions from "../Redux/actions";
 
 function Item(props) {
-  console.log("pros", props);
   const { productName, images, productId } = props.item;
   const ItemWrapper = useRef(null);
   const placeHolder =

@@ -1,6 +1,6 @@
 import React from "react";
 import { Provider } from "react-redux";
-import { createStore } from "redux";
+import { applyMiddleware, createStore } from "redux";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 
 import Dashboard from "./Components/Dashboard";
@@ -9,10 +9,12 @@ import Cart from "./Components/Cart";
 import "./index.css";
 import reducer from "./Redux/reducer";
 import { MdShoppingCart } from "react-icons/md";
+import thunk from "redux-thunk";
 
 function App() {
+  const store = createStore(reducer, applyMiddleware(thunk));
   return (
-    <Provider store={createStore(reducer)}>
+    <Provider store={store}>
       <div>
         <Router>
           <div className="headerBar commonPadding">

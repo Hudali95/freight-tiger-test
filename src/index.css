@@ -21,17 +21,28 @@ body {
   box-shadow: 6px 8px 15px -16px rgba(0, 0, 0, 0.43);
 }
 .headerBar {
-  height: 42px;
   width: 100%;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  position: sticky;
+  top: 0;
+  padding: 20px;
+  color: #fff;
+  background-color: #030e04;
+}
+.dashboardWrapper {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  padding-top: 42px;
 }
 .itemsContainer {
+  width: 90%;
+
   display: flex;
   flex-wrap: wrap;
-  justify-content: center;
-  align-items: flex-start;
+  justify-content: space-around;
 }
 .itemWrapper {
   background-color: #fff;
@@ -64,6 +75,7 @@ body {
   justify-content: center;
   border: 1px solid #e8e8e8;
   cursor: pointer;
+  border-radius: 2px;
 }
 .imageWrapper {
   width: 100%;
@@ -74,4 +86,8 @@ body {
 }
 .image {
   height: 100%;
+}
+.cartButton {
+  width: 50px;
+  font-size: 24px;
 }

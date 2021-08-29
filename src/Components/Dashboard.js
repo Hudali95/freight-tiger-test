@@ -1,5 +1,6 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
+
 import Item from "./Item";
 
 function Dashboard() {
@@ -10,8 +11,7 @@ function Dashboard() {
       .then((res) => setItemData(res.data.products));
   }, []);
   return (
-    <div>
-      <div className="headerBar commonPadding">My store</div>
+    <div className="dashboardWrapper">
       <div className="itemsContainer">
         {itemsData.map((el) => (
           <Item item={el} />

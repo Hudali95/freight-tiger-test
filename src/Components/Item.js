@@ -1,6 +1,9 @@
 import React, { useRef, useEffect } from "react";
+import { connect } from "react-redux";
+import * as actions from "../Redux/actions";
 
 function Item(props) {
+  console.log("pros", props);
   const { productName, images, productId } = props.item;
   const ItemWrapper = useRef(null);
   const placeHolder =
@@ -9,7 +12,7 @@ function Item(props) {
     const options = {
       root: null,
       threshold: 0.01,
-      rootMargin: "75%",
+      rootMargin: "25%",
     };
     let observer = new IntersectionObserver((el) => {
       if (el[0].isIntersecting && el[0].target.src === placeHolder) {
@@ -37,10 +40,15 @@ function Item(props) {
         </div>
       </div>
       <div className="itemFooter commonPadding">
-        <button className="actionButton boxShadow">Add to Cart</button>
+        <button
+          className="actionButton boxShadow"
+          onClick={() => props.addItemToCart(productId)}
+        >
+          Add to Cart
+        </button>
       </div>
     </div>
   );
 }
 
-export default Item;
+export default connect(null, actions)(Item);

@@ -1,13 +1,77 @@
-body {
+@import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
+* {
+  padding: 0;
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  box-sizing: border-box;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+body {
+  height: 100vh;
+  width: 100vw;
+  overflow: scroll;
+  font-size: 16px;
+  font-family: "Roboto", sans-serif;
+  color: #252625;
+}
+.commonPadding {
+  padding: 0px 10px;
+}
+.boxShadow {
+  -webkit-box-shadow: 6px 8px 15px -16px rgba(0, 0, 0, 0.43);
+  box-shadow: 6px 8px 15px -16px rgba(0, 0, 0, 0.43);
+}
+.headerBar {
+  height: 42px;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.itemsContainer {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: flex-start;
+}
+.itemWrapper {
+  background-color: #fff;
+  width: 400px;
+  height: 300px;
+  padding: 10px;
+  border: 1px solid #e8e8e8;
+  margin-right: 10px;
+  margin-bottom: 10px;
+  align-self: flex-start;
+}
+.itemFooter,
+.itemHeader {
+  height: 42px;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+.itemHeader {
+  justify-content: flex-start;
+}
+
+.actionButton {
+  background-color: #3baa3f;
+  width: 30%;
+  height: 32px;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid #e8e8e8;
+  cursor: pointer;
+}
+.imageWrapper {
+  width: 100%;
+  height: 200px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.image {
+  height: 100%;
 }

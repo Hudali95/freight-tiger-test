@@ -186,6 +186,26 @@ button {
 }
 .cartItem {
   padding: 20px;
-  min-height: 200px;
   max-width: 50vw;
+  background-color: #fff;
+  border: 1px solid #e8e8e8;
+  margin: 10px;
+}
+.cartItem img {
+  margin: 5px 10px 5px 0px;
+  height: 100%;
+}
+.cartWrapper {
+  padding: 42px;
+}
+.cartItemBody {
+  display: flex;
+  height: 150px;
+}
+.cartItemBody .descRow {
+  width: 25%;
+  height: 100%;
+}
+.price::after {
+  content: " Rs";
 }

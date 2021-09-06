@@ -12,7 +12,8 @@ router.get("/items", (req, res) => {
       let result = response.data.products.slice(from, to);
 
       res.send(result);
-    });
+    })
+    .catch((err) => res.status(500).send({ message: "something wrong" }));
 });
 router.post("/getProduct", (req, res) => {
   axios
@@ -23,7 +24,8 @@ router.post("/getProduct", (req, res) => {
       });
 
       res.send(result);
-    });
+    })
+    .catch((err) => res.status(500).send({ message: "something wrong" }));
 });
 
 module.exports = router;

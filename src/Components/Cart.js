@@ -3,11 +3,7 @@ import { connect } from "react-redux";
 import CartItem from "./CartItem";
 
 function Cart(props) {
-  return (
-    <div>
-      <CartItem />
-    </div>
-  );
+  return <CartItem />;
 }
 const mapStateToProps = (state) => {
   return state;

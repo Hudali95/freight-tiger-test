@@ -43,9 +43,14 @@ const reducer = (state = store, action) => {
           (el) => el.productId !== action.payload
         );
       } else {
-        singleItem.count--;
-        newAarry = state.cartItems;
+        newAarry = state.cartItems.map((el) => {
+          if (el.productId === action.payload) {
+            el.count = el.count - 1;
+          }
+          return el;
+        });
       }
+      console.log("newAarry", newAarry);
       return {
         ...state,
         cartItems: newAarry,

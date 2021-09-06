@@ -6,6 +6,16 @@ export function addItemToCart(productId) {
     payload: productId,
   };
 }
+
+export function updateCart(type, id) {
+  if (type === "add") return addItemToCart(id);
+  if (type === "remove")
+    return {
+      type: "REMOVE_ITEM_FROM_CART",
+      payload: id,
+    };
+}
+
 export function showCartNotification(value) {
   return {
     type: "SHOW_CART_NOTIFICATION",

@@ -32,6 +32,25 @@ const reducer = (state = store, action) => {
         showNotification: true,
         timer: 3000,
       };
+
+    case "REMOVE_ITEM_FROM_CART":
+      let singleItem = state.cartItems.filter(
+        (el) => el.productId === action.payload
+      )[0];
+      let newAarry;
+      if (singleItem.count === 1) {
+        newAarry = state.cartItems.filter(
+          (el) => el.productId !== action.payload
+        );
+      } else {
+        singleItem.count--;
+        newAarry = state.cartItems;
+      }
+      return {
+        ...state,
+        cartItems: newAarry,
+      };
+
     case "ITEMS_FETCH_SUCCESS":
       return {
         ...state,

@@ -13,6 +13,9 @@ body {
   font-family: "Roboto", sans-serif;
   color: #252625;
 }
+button {
+  cursor: pointer;
+}
 .commonPadding {
   padding: 0px 10px;
 }
@@ -164,4 +167,25 @@ body {
   100% {
     transform: rotate(360deg);
   }
+}
+.cartFooter {
+  display: flex;
+  justify-content: flex-end;
+}
+.cartFooter button {
+  background-color: #3baa3f;
+  border: none;
+  padding: 10px;
+  color: #fff;
+}
+.cartCount {
+  width: 42px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.cartItem {
+  padding: 20px;
+  min-height: 200px;
+  max-width: 50vw;
 }

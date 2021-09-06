@@ -10,8 +10,20 @@ router.get("/items", (req, res) => {
     .get("https://run.mocky.io/v3/05e9651d-528e-4d7c-a60b-bae8f09684c6")
     .then((response) => {
       let result = response.data.products.slice(from, to);
-      console.log(result.length);
+
       res.send(result);
+    });
+});
+router.get("/getProduct", (req, res) => {
+  axios
+    .get("https://run.mocky.io/v3/05e9651d-528e-4d7c-a60b-bae8f09684c6")
+    .then((response) => {
+      let result = response.data.products.filter(
+        (el) => el.productId === req.query.productId
+      );
+      console.log(result);
+
+      res.send(result[0]);
     });
 });
 

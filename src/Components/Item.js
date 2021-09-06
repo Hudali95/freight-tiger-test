@@ -3,7 +3,8 @@ import { connect } from "react-redux";
 import * as actions from "../Redux/actions";
 
 function Item(props) {
-  const { productName, images, productId } = props.item;
+  const { productName, images, productId, sizes, gender, mrp, price } =
+    props.item;
   const ItemWrapper = useRef(null);
   const placeHolder =
     "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkqAcAAIUAgUW0RjgAAAAASUVORK5CYII=";
@@ -36,6 +37,27 @@ function Item(props) {
             alt={productName}
             ref={ItemWrapper}
           ></img>
+        </div>
+        <div className="descWrapper">
+          <div className="descRow">
+            <div className="descHeaderName">Sizes</div>
+            <div className="descValue">{sizes}</div>
+          </div>
+
+          <div className="descRow">
+            <div className="descHeaderName">Gender</div>
+            <div className="descValue">{gender}</div>
+          </div>
+          {price !== mrp && (
+            <div className="descRow">
+              <div className="descHeaderName ">MRP</div>
+              <div className="descValue price mrp">{mrp}</div>
+            </div>
+          )}
+          <div className="descRow">
+            <div className="descHeaderName ">Price</div>
+            <div className="descValue price ">{price}</div>
+          </div>
         </div>
       </div>
       <div className="itemFooter commonPadding">

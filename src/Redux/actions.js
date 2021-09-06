@@ -6,6 +6,12 @@ export function addItemToCart(productId) {
     payload: productId,
   };
 }
+export function showCartNotification(value) {
+  return {
+    type: "SHOW_CART_NOTIFICATION",
+    payload: value,
+  };
+}
 
 export function getItems(from, to) {
   return (dispatch) => {

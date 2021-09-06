@@ -3,14 +3,34 @@ const store = {
   items: [],
   limit: { from: 0, to: 10 },
   reachedEnd: false,
+  showNotification: false,
+  timer: 0,
 };
 
 const reducer = (state = store, action) => {
   switch (action.type) {
     case "ADD_ITEM_TO_CART":
+      let cartItems;
+      let item = state.cartItems.filter(
+        (el) => el.productId === action.payload
+      );
+      if (item.length > 0) {
+        item[0].count++;
+        cartItems = [...state.cartItems];
+      } else {
+        cartItems = [
+          ...state.cartItems,
+          {
+            productId: action.payload,
+            count: 1,
+          },
+        ];
+      }
       return {
         ...state,
-        cartItems: [...store.cartItems, action.payload],
+        cartItems,
+        showNotification: true,
+        timer: 3000,
       };
     case "ITEMS_FETCH_SUCCESS":
       return {
@@ -21,6 +41,11 @@ const reducer = (state = store, action) => {
           from: state.limit.to,
           to: state.limit.to + 10,
         },
+      };
+    case "SHOW_CART_NOTIFICATION":
+      return {
+        ...state,
+        showNotification: action.payload,
       };
     default:
       return state;

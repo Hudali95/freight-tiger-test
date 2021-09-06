@@ -49,6 +49,7 @@ function Dashboard(props) {
   );
 }
 const mapStatesToProps = (state) => {
+  console.log("state", state);
   return {
     products: state.items,
     from: state.limit.from,
